@@ -17,6 +17,9 @@ export const loja = {
   grupoWhatsApp: '',
   termosDeUso: '',
 
+  // Crédito de criação do site (rodapé).
+  credito: { usuario: 'next_sites014', url: 'https://www.instagram.com/next_sites014/' },
+
   // Números da seção "Por que criar com a JLC?". Lista vazia esconde o bloco.
   // Ex.: { valor: '+200', texto: 'ideias materializadas' }
   numeros: [] as { valor: string; texto: string }[],
@@ -30,6 +33,10 @@ export const loja = {
 // Salve os arquivos em public/bonecos — veja LEIA-ME.md, seção "Bonecos".
 const pasta = '/bonecos/';
 export const imagens = {
+  // Imagem de fundo do topo (impressora neon).
+  heroFundo: pasta + 'hero-bugou.png',
+  // Logo da loja (PNG transparente em /public). Vazio = logo em texto.
+  logo: '',
   flutuante1: pasta + 'anime-float-blonde-cutout.png',
   flutuante2: pasta + 'anime-float-purple-cutout.png',
   flutuante3: pasta + 'anime-float-hero-cutout.png',
