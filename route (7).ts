@@ -1,2 +1,14 @@
-import {data} from '../../../lib/catalog';
-export async function POST(req:Request){try{const {items}=await req.json() as {items:any[]};if(!Array.isArray(items)||!items.length||items.length>100)throw Error();const d=await data();const now=new Date().toISOString();let total=0;const money=(n:number)=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(n/100);const seen=new Set();const lines=items.map((i:any)=>{if(seen.has(i.id)||!Number.isInteger(i.quantity)||i.quantity<1||i.quantity>99)throw Error();seen.add(i.id);const p:any=d.products.find((p:any)=>p.id===i.id);if(!p||!p.available||p.starts&&p.starts>now||p.ends&&p.ends<now||!d.collections.some((c:any)=>c.id===p.collection_id&&c.active))throw Error();const custom=i.personalization||{};if(typeof custom!=='object'||Array.isArray(custom)||Object.entries(custom).some(([k,v])=>!['name','color','size','notes'].includes(k)||typeof v!=='string'||v.length>500))throw Error();const extra=p.personalizable?Object.entries(custom).filter(([,v])=>v).map(([k,v])=>({name:'Nome/texto',color:'Cor',size:'Tamanho',notes:'Observações'} as any)[k]+': '+v).join('\n'):'';total+=p.price*i.quantity;return `${i.quantity} × ${p.name}\nValor unitário: ${money(p.price)} | Subtotal: ${money(p.price*i.quantity)}${extra?'\nPersonalização:\n'+extra:''}`;});return Response.json({url:'https://wa.me/5514997096646?text='+encodeURIComponent('Olá! Gostaria de fazer este pedido na JLC Soluções:\n\n'+lines.join('\n\n')+'\n\nTotal dos itens: '+money(total)+'\n\nPodemos confirmar disponibilidade, personalizações, valores e entrega?')});}catch{return Response.json({error:'Um item mudou de preço ou disponibilidade. Atualize o catálogo e reveja o pedido.'},{status:400});}}
+import {supabase,bucket} from '../../../lib/supabase';
+import {getAdmin} from '../../../lib/auth';
+export async function GET(req:Request,{params}:{params:Promise<{key:string}>}){try{
+ const {key}=await params;if(!/^[a-f0-9-]{36}$/.test(key))return new Response(null,{status:404});
+ const path='/storage/v1/object/'+bucket+'/'+key;
+ // Public catalog photos do not need two additional admin-auth calls.
+ let r=await supabase(path),restricted=false;
+ if(!r.ok){const admin=await getAdmin();if(!admin)return new Response(null,{status:[400,403,404].includes(r.status)?404:503});restricted=true;r=await supabase(path,{},admin.token);}
+ if(!r.ok)return new Response(null,{status:[400,403,404].includes(r.status)?404:503});
+ const headers=new Headers({'Content-Type':r.headers.get('Content-Type')||'image/jpeg','Cache-Control':restricted?'private, no-store':'private, max-age=3600','X-Content-Type-Options':'nosniff'});
+ const etag=r.headers.get('etag');if(etag)headers.set('ETag',etag);
+ if(!restricted&&etag&&req.headers.get('if-none-match')===etag){await r.body?.cancel();return new Response(null,{status:304,headers});}
+ return new Response(r.body,{headers});
+ }catch{return new Response(null,{status:503});}}

@@ -1,7 +1,4 @@
-'use client';
 import {loja, imagens, waLink} from '../lib/loja';
-
-function hide(e: React.SyntheticEvent<HTMLImageElement>) { e.currentTarget.style.visibility = 'hidden'; }
 
 function Depoimento() {
   const a = loja.avaliacao;
@@ -67,9 +64,9 @@ export default function Landing() {
             </div>
             <div className="lp-hero-art" aria-hidden="true">
               <span className="lp-glow" />
-              <img className="lp-float lp-f1" src={imagens.flutuante1} alt="" onError={hide} />
-              <img className="lp-float lp-f2" src={imagens.flutuante2} alt="" onError={hide} />
-              <img className="lp-float lp-f3" src={imagens.flutuante3} alt="" onError={hide} />
+              <img className="lp-float lp-f1" src={imagens.flutuante1} alt="" />
+              <img className="lp-float lp-f2" src={imagens.flutuante2} alt="" />
+              <img className="lp-float lp-f3" src={imagens.flutuante3} alt="" />
             </div>
           </div>
           <a className="lp-scroll" href="#como-funciona">role para explorar</a>
@@ -102,7 +99,7 @@ export default function Landing() {
                 </dl>
               )}
             </div>
-            <div className="lp-why-art"><img src={imagens.organizador} alt="" loading="lazy" onError={hide} /></div>
+            <div className="lp-why-art"><img src={imagens.organizador} alt="" loading="lazy" /></div>
           </div>
         </section>
 
@@ -112,7 +109,7 @@ export default function Landing() {
             <h2>Quem já <em>criou com a gente?</em></h2>
             <p className="lp-text">Gente de verdade, criações que saíram do feed e foram parar nas casas, mesas e coleções por aí.</p>
             <div className="lp-gallery">
-              {imagens.galeria.map(g => <figure key={g.src}><img src={g.src} alt={g.alt} loading="lazy" onError={hide} /></figure>)}
+              {imagens.galeria.map(g => <figure key={g.src}><img src={g.src} alt={g.alt} loading="lazy" /></figure>)}
             </div>
             <Depoimento />
             {insta && <a className="lp-insta" href={insta} {...ext}>↗ Acompanhe @{loja.instagram} no Instagram</a>}

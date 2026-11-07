@@ -183,3 +183,6 @@ body:has(.lp){background:#0f001a}
   .lp .lp-btn-sm{width:auto}
 }
 @media(prefers-reduced-motion:reduce){.lp .lp-float,.lp .lp-marquee-track{animation:none}.lp .lp-btn{transition:none}}
+header:not(.lp-header) .brand .brand3d{color:#fff!important}
+header:not(.lp-header) .brand .brandname{color:#c08bff!important}
+.breadcrumbs>a{display:inline!important}
