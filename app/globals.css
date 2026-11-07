@@ -350,3 +350,60 @@ body:has(.lp){background:#09000f}
 @media (prefers-reduced-motion: reduce) {.lp *, .lp *::before, .lp *::after { animation:none !important; transition:none !important; }
  }
 
+
+/* =========================================================
+   Responsividade extra (tablets, notebooks e celulares)
+   ========================================================= */
+/* Bonecos laterais: cabem nas margens, sem cobrir o texto */
+@media (min-width:1100px){
+  .lp .b-floating-figure.b-blonde{left:0;width:min(360px, calc((100vw - 760px) / 2))}
+  .lp .b-floating-figure.b-purple{right:0;width:min(325px, calc((100vw - 780px) / 2))}
+}
+@media (min-width:1100px) and (max-width:1749px){
+  .lp .b-universe-copy{padding-bottom:160px}
+  .lp .b-floating-figure.b-hero{right:auto;left:calc(50% - 95px);bottom:-150px;width:190px}
+}
+/* Tablet e celular: bonecos em fileira, abaixo dos passos */
+@media (max-width:1099px){
+  .lp .b-universe-section{min-height:0}
+  .lp .b-universe-copy{padding:80px 0 calc(min(45vw, 390px) + 40px)}
+  .lp .b-floating-figure.b-blonde{top:auto;bottom:0;left:1%;width:min(30vw, 260px)}
+  .lp .b-floating-figure.b-purple{top:auto;bottom:0;right:1%;width:min(28vw, 245px)}
+  .lp .b-floating-figure.b-hero{top:auto;right:auto;bottom:-30px;left:calc(50% - min(12vw, 100px));width:min(24vw, 200px);opacity:1}
+}
+/* Topo em tablet: texto inteiro em cima, impressora embaixo */
+@media (min-width:701px) and (max-width:1000px){
+  .lp .b-hero.b-wrap{min-height:0;padding:56px 0 min(52vw, 440px);align-items:flex-start}
+  .lp .b-hero-content{width:100%}
+  .lp .b-hero-art{top:auto;bottom:0;left:-4%;right:-4%;height:min(52vw, 440px);background-size:auto 100%;background-position:right bottom;mask-image:linear-gradient(to bottom, transparent 0, black 22%, black 100%)}
+  .lp .b-hero-graffiti{top:auto;bottom:min(40vw, 330px);right:2%;width:300px;font-size:44px}
+  .lp .b-hero-sparks{top:auto;bottom:20px;right:10%;width:60%;height:min(42vw, 360px)}
+  .lp .b-down{display:none}
+}
+/* Cartão "Por que criar": organizador abaixo do texto no tablet */
+@media (min-width:701px) and (max-width:900px){
+  .lp .b-impact-wrap{align-items:flex-start;padding:45px 40px 300px}
+  .lp .b-impact-print{right:50%;transform:translateX(50%);bottom:-30px;width:240px;height:290px}
+}
+@media (min-width:901px) and (max-width:1099px){
+  .lp .b-impact-content{max-width:calc(100% - 250px)}
+  .lp .b-impact-print{right:-20px;width:260px;height:310px}
+}
+/* Comunidade: figuras proporcionais à tela no celular */
+@media (max-width:480px){
+  .lp .b-orbit-figure.b-one{width:38vw}
+  .lp .b-orbit-figure.b-two{width:33vw}
+  .lp .b-orbit-figure.b-three{width:34vw}
+  .lp .b-community-orbit::before{width:min(290px, 74vw);height:min(290px, 74vw)}
+}
+/* Toques confortáveis e textos que não estouram */
+@media (max-width:700px){
+  .lp .b-footer-links a{padding:6px 0;margin:2px 0}
+  .lp .b-contact-panel h3{overflow-wrap:anywhere}
+  .lp .b-community-float{max-width:calc(100vw - 30px)}
+}
+/* Rodapé: crédito abaixo do copyright até 1000px */
+@media (max-width:1000px){
+  .lp .b-footer-bottom{flex-direction:column;align-items:flex-start;gap:14px}
+  .lp .b-footer-credit{position:static;transform:none;align-items:flex-start;white-space:normal}
+}
