@@ -5,16 +5,17 @@ Página inicial no mesmo modelo do site da Bugou, com os dados da Reset 3D. Cat�
 ## Dados da loja
 Tudo fica em `lib/loja.ts`: nome, WhatsApp (19) 99024-6961, Instagram @reset.3d, Linktree, textos, números, depoimento, crédito (@next_sites014) e logo. Campos vazios escondem o bloco.
 
-## Imagens (pasta public/imagens)
-| Arquivo | Onde aparece | Formato |
-|---|---|---|
-| hero-fundo.png | arte do topo | paisagem, ~1300 x 800 |
-| destaque-esquerda.png / destaque-direita.png | "Nada de prateleira pronta" | PNG transparente, em pé, ~800 x 1200 |
-| destaque-centro.png | abaixo dos passos | PNG transparente, menor |
-| produto-destaque.png | cartão "Por que criar" | PNG transparente |
-| galeria-1.png, galeria-2.png, galeria-3.png | "Quem já criou com a gente" | PNG transparente, em pé |
+## Imagens (pasta public/bonecos)
+| Arquivo | Onde aparece |
+|---|---|
+| hero-bugou.png | arte do topo (paisagem, ~1300 x 800) |
+| anime-float-blonde-cutout.png | "Nada de prateleira pronta", à esquerda |
+| anime-float-purple-cutout.png | mesma seção, à direita (já incluída) |
+| anime-float-hero-cutout.png | abaixo dos três passos, menor |
+| printing-desk-organizer-cutout.png | cartão "Por que criar" (já incluída) |
+| mikey-figure-cutout.png, zoro-figure-cutout.png, sukuna-yuji-figure-cutout.png | "Quem já criou com a gente" |
 
-Use fotos dos produtos da Reset com fundo removido. Até ~500 KB cada.
+Todas em PNG (fundo transparente, exceto a do topo), até ~500 KB cada. Os nomes e caminhos ficam em `lib/loja.ts`.
 
 ## Fontes (pasta public/fonts)
 Copie `bugou-display.ttf` e `bugou-tech.ttf` (as mesmas do modelo) para `public/fonts`.
