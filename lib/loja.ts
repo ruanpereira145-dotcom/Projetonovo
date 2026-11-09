@@ -32,19 +32,20 @@ export const loja = {
   logo: '',
 };
 
-// Imagens da página inicial: coloque os arquivos em public/imagens com estes nomes.
-const pasta = '/imagens/';
+// Imagens da página inicial (pasta public/bonecos). Coloque os arquivos com estes nomes, em PNG.
+// Para esconder um espaço, troque o caminho por ''.
+const pasta = '/bonecos/';
 export const imagens = {
-  heroFundo: pasta + 'hero-fundo.png',          // arte do topo (paisagem, ~1300 x 800)
-  flutuante1: pasta + 'destaque-esquerda.png',   // PNG transparente, em pé
-  flutuante2: pasta + 'destaque-direita.png',    // PNG transparente, em pé
-  flutuante3: pasta + 'destaque-centro.png',     // PNG transparente, menor
-  organizador: pasta + 'produto-destaque.png',   // peça do cartão "Por que criar"
-  galeria: [
-    { src: pasta + 'galeria-1.png', alt: 'Peça impressa em 3D pela Reset 3D' },
-    { src: pasta + 'galeria-2.png', alt: 'Peça impressa em 3D pela Reset 3D' },
-    { src: pasta + 'galeria-3.png', alt: 'Peça impressa em 3D pela Reset 3D' },
-  ],
+  heroFundo: pasta + 'hero-bugou.png',                       // arte do topo (paisagem, ~1300 x 800)
+  flutuante1: pasta + 'anime-float-blonde-cutout.png',       // "Nada de prateleira pronta", à esquerda
+  flutuante2: pasta + 'anime-float-purple-cutout.png',       // mesma seção, à direita
+  flutuante3: pasta + 'anime-float-hero-cutout.png',         // abaixo dos três passos, menor
+  organizador: pasta + 'printing-desk-organizer-cutout.png', // cartão "Por que criar"
+  galeria: [                                                  // "Quem já criou com a gente"
+    { src: pasta + 'mikey-figure-cutout.png', alt: 'Peça impressa em 3D' },
+    { src: pasta + 'zoro-figure-cutout.png', alt: 'Peça impressa em 3D' },
+    { src: pasta + 'sukuna-yuji-figure-cutout.png', alt: 'Peça impressa em 3D' },
+  ] as { src: string; alt: string }[],
 };
 
 export const waLink = (texto: string = loja.mensagem) =>

@@ -21,7 +21,7 @@ export default function Landing() {
   const a = loja.avaliacao;
   const partes = a.destaque && a.texto.includes(a.destaque) ? a.texto.split(a.destaque) : [a.texto];
   const iniciais = a.cliente.split(' ').map(p => p[0]).slice(0, 2).join('').toUpperCase();
-  const temQuadro = !!(a.texto || insta);
+  const temQuadro = !!a.texto;
   const heroStyle = {'--hero-img': imagens.heroFundo ? `url(${imagens.heroFundo})` : 'none'} as React.CSSProperties;
 
   return (
@@ -62,9 +62,9 @@ export default function Landing() {
           <div className="b-ticker" aria-label="categorias"><div className="b-ticker-inner">Sua ideia <b>✦</b><span>feito sob medida</span><b>✦</b> Camada por camada <span>✦</span> Do seu jeito <b>✦</b><span>Com a sua personalidade</span><b>✦</b> Sua ideia <span>✦</span> Feito sob medida <b>✦</b> Camada por camada <span>✦</span> Do seu jeito <b>✦</b><span>Com a sua personalidade</span><b>✦</b></div></div>
 
           <section className="b-universe-section" id="como-funciona">
-            <img className="b-floating-figure b-blonde" src={imagens.flutuante1} alt="" aria-hidden="true" />
-            <img className="b-floating-figure b-purple" src={imagens.flutuante2} alt="" aria-hidden="true" />
-            <img className="b-floating-figure b-hero" src={imagens.flutuante3} alt="" aria-hidden="true" />
+            {imagens.flutuante1 && <img className="b-floating-figure b-blonde" src={imagens.flutuante1} alt="" aria-hidden="true" />}
+            {imagens.flutuante2 && <img className="b-floating-figure b-purple" src={imagens.flutuante2} alt="" aria-hidden="true" />}
+            {imagens.flutuante3 && <img className="b-floating-figure b-hero" src={imagens.flutuante3} alt="" aria-hidden="true" />}
             <div className="b-wrap b-universe-copy">
               <div className="b-kicker">Nada de prateleira pronta</div>
               <h2>Sua ideia merece<br /><em>nascer diferente.</em></h2>
@@ -85,7 +85,7 @@ export default function Landing() {
                 <p>Não importa se você chegou com um rabisco, uma referência ou uma ideia ainda meio maluca: aqui, ela vira algo único, com cuidado em cada camada.</p>
                 {loja.numeros.length > 0 && <div className="b-stats">{loja.numeros.map(n => <div className="b-stat" key={n.texto}><b>{n.valor}</b><span>{n.texto}</span></div>)}</div>}
               </div>
-              <div className="b-impact-print" aria-hidden="true"><img src={imagens.organizador} alt="" /></div>
+              {imagens.organizador && <div className="b-impact-print" aria-hidden="true"><img src={imagens.organizador} alt="" /></div>}
             </div>
           </section>
 
@@ -95,10 +95,10 @@ export default function Landing() {
                 <div><div className="b-kicker">A comunidade está criando</div><h2>Quem já<br /><em>criou com a gente?</em></h2></div>
                 <p className="b-section-copy">Gente de verdade, criações que saíram do feed e foram parar nas casas, mesas e coleções por aí.</p>
               </div>
-              <div className={'b-proof-grid' + (temQuadro ? '' : ' b-solo')}>
-                <div className="b-community-orbit" aria-label="Figures 3D flutuando">
-                  {imagens.galeria.map((g, i) => <img key={g.src} className={'b-orbit-figure ' + ['b-one', 'b-two', 'b-three'][i]} src={g.src} alt={g.alt} />)}
-                </div>
+              {(imagens.galeria.length > 0 || temQuadro) && <div className={'b-proof-grid' + (temQuadro ? '' : ' b-solo')}>
+                {imagens.galeria.length > 0 && <div className="b-community-orbit" aria-label="Peças impressas em 3D">
+                  {imagens.galeria.slice(0, 3).map((g, i) => <img key={g.src} className={'b-orbit-figure ' + ['b-one', 'b-two', 'b-three'][i]} src={g.src} alt={g.alt} />)}
+                </div>}
                 {temQuadro && (
                   <aside className="b-review-board">
                     {a.texto && <>
@@ -109,7 +109,8 @@ export default function Landing() {
                     {insta && <a className="b-insta" href={insta} {...ext}>↗ Acompanhe @{loja.instagram} no Instagram</a>}
                   </aside>
                 )}
-              </div>
+              </div>}
+              {!temQuadro && insta && <a className="b-insta b-insta-solo" href={insta} {...ext}>↗ Acompanhe @{loja.instagram} no Instagram</a>}
             </div>
           </section>
 
