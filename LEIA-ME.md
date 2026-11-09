@@ -1,9 +1,9 @@
-# Reset 3D — site no modelo Bugou + catálogo (Cloudflare Workers + Supabase)
+# PatioBox3D — site no modelo Bugou + catálogo (Cloudflare Workers + Supabase)
 
-Página inicial no mesmo modelo do site da Bugou, com os dados da Reset 3D. Catálogo, pedido pelo WhatsApp e painel `/admin` funcionando como na JLC.
+Página inicial no mesmo modelo do site da Bugou, com os dados da PatioBox3D. Catálogo, pedido pelo WhatsApp e painel `/admin` funcionando como na JLC.
 
 ## Dados da loja
-Tudo fica em `lib/loja.ts`: nome, WhatsApp (19) 99024-6961, Instagram @reset.3d, Linktree, textos, números, depoimento, crédito (@next_sites014) e logo. Campos vazios escondem o bloco.
+Tudo fica em `lib/loja.ts`: nome, WhatsApp (21) 98772-7657, Instagram @patiobox3d, Rio de Janeiro-RJ, horário 9h às 18h, textos, números, depoimento, crédito (@next_sites014) e logo. Campos vazios escondem o bloco.
 
 ## Imagens (pasta public/bonecos)
 | Arquivo | Onde aparece |
@@ -20,10 +20,10 @@ Todas em PNG (fundo transparente, exceto a do topo), até ~500 KB cada. Os nomes
 ## Fontes (pasta public/fonts)
 Copie `bugou-display.ttf` e `bugou-tech.ttf` (as mesmas do modelo) para `public/fonts`.
 
-## Cloudflare (Workers > reset3d > Settings > Builds)
+## Cloudflare (Workers > patiobox3d > Settings > Builds)
 Build command: `npm run build` · Deploy command: `npm run deploy` · Root directory: `/`
 
 ## Banco
-`wrangler.jsonc` aponta para o banco de demonstração. Para a Reset ter o próprio banco, troque `SUPABASE_URL` e `SUPABASE_PUBLISHABLE_KEY`, rode `supabase/01-jlc-estrutura.sql` e cadastre os administradores na tabela `jlc_admins` (o acesso é validado só pelo banco).
+`wrangler.jsonc` aponta para o banco de demonstração. Para a PatioBox3D ter o próprio banco, troque `SUPABASE_URL` e `SUPABASE_PUBLISHABLE_KEY`, rode `supabase/01-jlc-estrutura.sql` e cadastre os administradores na tabela `jlc_admins` (o acesso é validado só pelo banco).
 
 ---

@@ -1,28 +1,28 @@
 // Dados da loja usados na página inicial. Para mudar contatos, textos ou imagens, edite só este arquivo.
 
 export const loja = {
-  nome: 'Reset 3D',
-  nomeCurto: 'Reset 3D',
+  nome: 'PatioBox3D',
+  nomeCurto: 'PatioBox3D',
   // Logo em texto (usado quando "logo" estiver vazio): sigla do selo e as duas linhas do nome.
-  sigla: 'R',
-  marca: ['Reset', '3D'] as [string, string],
-  whatsapp: '5519990246961',
-  mensagem: 'Oi, vim pelo site da Reset 3D e quero fazer um orçamento.',
-  cidade: '', // vazio = não mostra cidade
-  entrega: 'Enviamos para todo o Brasil',
-  aviso: 'Personalizados, presentes e criatividade — enviamos para todo o Brasil.',
-  rodape: 'Ideias que ganham forma, de impressão 3D para todo o Brasil.',
+  sigla: 'P',
+  marca: ['Patio', 'Box3D'] as [string, string],
+  whatsapp: '5521987727657',
+  mensagem: 'Oi, vim pelo site da PatioBox3D e quero fazer um orçamento.',
+  cidade: 'Rio de Janeiro-RJ',
+  entrega: 'Atendimento das 9h às 18h',
+  aviso: 'Decoração 3D que encanta, brinquedos criativos e personalizados sob medida.',
+  rodape: 'Decoração, brinquedos e personalizados em impressão 3D, direto do Rio de Janeiro.',
 
   // Deixe vazio ('') para esconder.
-  instagram: 'reset.3d',
-  linktree: 'https://linktr.ee/Reset3D',
+  instagram: 'patiobox3d',
+  linktree: '',
   grupoWhatsApp: '',
   termosDeUso: '',
 
   // Crédito de criação do site (rodapé).
   credito: { usuario: 'next_sites014', url: 'https://www.instagram.com/next_sites014/' },
 
-  // Números da seção "Por que criar". Lista vazia esconde o bloco. Ex.: { valor: '+200', texto: 'pedidos entregues' }
+  // Números da seção "Por que criar". Lista vazia esconde o bloco. Ex.: { valor: '+1.300', texto: 'seguidores no Instagram' }
   numeros: [] as { valor: string; texto: string }[],
 
   // Depoimento de um cliente. Texto vazio esconde o bloco.
