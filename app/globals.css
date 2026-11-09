@@ -407,3 +407,5 @@ body:has(.lp){background:#09000f}
   .lp .b-footer-bottom{flex-direction:column;align-items:flex-start;gap:14px}
   .lp .b-footer-credit{position:static;transform:none;align-items:flex-start;white-space:normal}
 }
+/* Fundo do topo nunca se repete */
+.lp .b-hero-art{background-repeat:no-repeat}

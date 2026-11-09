@@ -10,7 +10,7 @@ function Logo({rodape = false}: {rodape?: boolean}) {
     <a className="b-brand" href="#inicio" aria-label={loja.nome + ' - início'}>
       {loja.logo
         ? <img className="b-logo-image" src={loja.logo} alt={loja.nome} />
-        : <>{!rodape && <span className="b-mascot">{loja.nomeCurto}</span>}<span className="b-brand-type">{loja.nomeCurto}<small>Soluções</small></span></>}
+        : <>{!rodape && <span className="b-mascot">{loja.sigla}</span>}<span className="b-brand-type">{loja.marca[0]}<small>{loja.marca[1]}</small></span></>}
     </a>
   );
 }
@@ -51,7 +51,7 @@ export default function Landing() {
                 <a className="b-btn b-btn-secondary" href="/catalogos/todos"><span className="b-button-icon"><svg className="b-ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 7 4v10l-7 4-7-4V7zM5 7l7 4 7-4M12 11v10" /></svg></span> Explorar peças</a>
               </div>
               <div className="b-hero-tags">
-                <span className="b-tag"><strong>{loja.cidade}</strong> • {loja.entrega}</span>
+                <span className="b-tag">{loja.cidade ? <><strong>{loja.cidade}</strong> • {loja.entrega}</> : <strong>{loja.entrega}</strong>}</span>
                 <span className="b-tag">Feito para a sua ideia</span>
                 <span className="b-tag">Do presente ao projeto sob medida</span>
               </div>
@@ -134,8 +134,8 @@ export default function Landing() {
               <div><Logo rodape /><p className="b-footer-copy">Você imagina. A {loja.nomeCurto} cria. {loja.rodape}</p></div>
               <div className="b-footer-links">
                 <div><h4>Navegação</h4><a href="#como-funciona">Como funciona</a><a href="/catalogos/todos">Explorar portfólio</a><a href="#por-que">Por que a {loja.nomeCurto}?</a>{loja.grupoWhatsApp && <a href={loja.grupoWhatsApp} {...ext}>Grupo de leilões</a>}{loja.termosDeUso && <a href={loja.termosDeUso}>Termos de uso</a>}</div>
-                <div><h4>Fale com a gente</h4><a href={wa} {...ext}>Pedir orçamento</a>{insta && <a href={insta} {...ext}>Instagram</a>}<a href={wa} {...ext}>Whatsapp</a></div>
-                <div className="b-footer-details"><h4>Informações</h4><p>{loja.cidade.replace('-', ' — ')}</p><p>{loja.entrega}.</p><p>Criações sob medida, feitas camada por camada.</p></div>
+                <div><h4>Fale com a gente</h4><a href={wa} {...ext}>Pedir orçamento</a>{insta && <a href={insta} {...ext}>Instagram</a>}{loja.linktree && <a href={loja.linktree} {...ext}>Linktree</a>}<a href={wa} {...ext}>Whatsapp</a></div>
+                <div className="b-footer-details"><h4>Informações</h4>{loja.cidade && <p>{loja.cidade.replace('-', ' — ')}</p>}<p>{loja.entrega}.</p><p>Criações sob medida, feitas camada por camada.</p></div>
               </div>
             </div>
             <div className="b-footer-social" aria-label="Perfis no Instagram">
